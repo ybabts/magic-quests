@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { QuestPrintout } from "./QuestPrintout.tsx";
 
 const defaultQuests = {
@@ -21,14 +21,29 @@ const defaultNumberOfRandomQuests = 4;
 
 export function QuestGenerator() {
   const [staticQuests, setStaticQuests] = useState(
-    defaultQuests.static.join("\n"),
+    localStorage.getItem("staticQuests") || defaultQuests.static.join("\n"),
   );
   const [randomQuests, setRandomQuests] = useState(
-    defaultQuests.random.join("\n"),
+    localStorage.getItem("randomQuests") || defaultQuests.random.join("\n"),
   );
   const [numberOfRandomQuests, setNumberOfRandomQuests] = useState(
-    defaultNumberOfRandomQuests,
+    localStorage.getItem("numberOfRandomQuests") === null
+      ? defaultNumberOfRandomQuests
+      : +localStorage.getItem("numberOfRandomQuests")!,
   );
+  useEffect(() => {
+    localStorage.setItem("staticQuests", staticQuests);
+  }, [staticQuests]);
+
+  useEffect(() => {
+    localStorage.setItem("randomQuests", randomQuests);
+  }, [randomQuests]);
+  useEffect(() => {
+    localStorage.setItem(
+      "numberOfRandomQuests",
+      numberOfRandomQuests.toString(),
+    );
+  });
   return (
     <div>
       <div class="print:hidden w-3/4 m-auto py-6">
@@ -71,6 +86,62 @@ export function QuestGenerator() {
         </div>
       </div>
       <div class="!print:flex hidden flex-wrap">
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
+        <QuestPrintout
+          quests={{
+            static: staticQuests.split("\n"),
+            random: randomQuests.split("\n"),
+            numberOfRandomQuests,
+          }}
+        />
         <QuestPrintout
           quests={{
             static: staticQuests.split("\n"),
