@@ -8,9 +8,9 @@ export function QuestPrintout(
   props: { quests: Quests },
 ) {
   return (
-    <div class="flex flex-col items-center p-5 py-8 w-100 border-dashed border-gray-300 border-1">
+    <div class="flex flex-col items-center p-5 py-8 w-100 border-dashed border-gray-300 border-1 break-inside-avoid">
       <h1 class="font-bold text-xl">Magic Monday</h1>
-      <h2 class="italic text-md">Quests for Today</h2>
+      <h2 class="italic text-md">Quests</h2>
       <ul>
         {generateRandomQuests(props.quests).map((quest, index) => (
           <li key={index}>
