@@ -1,5 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import { QuestPrintout } from "./QuestPrintout.tsx";
+import { installGlobals } from "https://deno.land/x/virtualstorage@0.1.0/mod.ts";
+installGlobals();
 
 const defaultQuests = {
   static: [
